@@ -5,8 +5,8 @@ jobs:
   qodana:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Cache Qodana dependencies
         uses: actions/cache@v2
         with:
@@ -15,14 +15,24 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-qodana-${{ github.ref }}
             ${{ runner.os }}-qodana-
-      - uses: JetBrains/qodana-action@v3.2.1
+      - name: Code Inspection
+        uses: JetBrains/qodana-action@v3.2.1
         with:
           linter: qodana-jvm-community
 #           fail-threshold: 1
 #           baseline: ".github/workflows/baseline.sarif.json"
 #           baseline-include-absent: true
-
-      - name: Save Qodana's results to artifacts
-        uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v2
         with:
           path: ${{ github.workspace }}/qodana
+      - uses: actions/download-artifact@v2
+        id: download
+        with:
+          name: 'artifact'
+          path: qodana
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secret.GITHUB_TOKEN }}
+          publish_dir: ./qodana/report
+          destination_dir: ./

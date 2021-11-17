@@ -1,0 +1,15 @@
+{
+  "total": 0,
+  "tools inspection": {
+    "Code Inspection": 0
+  },
+  "attributes": {
+    "vcs": {
+      "sarifIdea": {
+        "repositoryUri": "https://github.com/ykoyote/Order-service",
+        "revisionId": "1f8143621ea6ae86c86eb7e7cf26eca26d24c089",
+        "branch": "main"
+      }
+    }
+  }
+}

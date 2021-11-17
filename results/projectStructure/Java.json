@@ -1,0 +1,8 @@
+{
+  "modules": [
+    {
+      "name": "orders",
+      "languageLevel": 16
+    }
+  ]
+}

@@ -19,7 +19,7 @@ jobs:
         with:
           linter: qodana-jvm-community
 #           fail-threshold: 1
-          baseline: ".github/workflows/baseline.sarif.json"
+#           baseline: ".github/workflows/baseline.sarif.json"
 #           baseline-include-absent: true
 
       - name: Save Qodana's results to artifacts

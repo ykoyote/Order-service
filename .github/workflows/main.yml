@@ -33,6 +33,6 @@ jobs:
       - name: Deploy to Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secret.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./qodana/report
           destination_dir: ./
